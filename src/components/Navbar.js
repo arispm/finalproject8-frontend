@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Navbar.css';
 import { FaShoppingBag } from 'react-icons/fa';
 
 const Navbar = () => {
+  const [color, setColor] = useState(false);
+  const changeColor = () => {
+    if (window.scrollY >= 90) {
+      setColor(true);
+    } else {
+      setColor(false);
+    }
+  };
+
+  window.addEventListener('scroll', changeColor);
+
   return (
     <>
-      <nav class="bg-[#c0d6d7] w-full md:flex md:justify-between md:items-center p-5">
+      <nav className={color ? 'header header-bg' : 'header'}>
         <div class="container flex flex-wrap items-center justify-between mx-auto">
           <a href="https://flowbite.com/" class="flex items-center">
-            <img src="https://cdn.shopify.com/s/files/1/1786/7381/files/type-white_f6376a9a-39f4-4396-827e-25364d56abf1_100x.png?v=1613734073" alt="" />
+            <img className="max-w-[100px]" src="https://cdn.shopify.com/s/files/1/1786/7381/files/PoM_Logo_Green-01.png?v=1614709987" alt="" />
           </a>
           <button
             data-collapse-toggle="navbar-default"
