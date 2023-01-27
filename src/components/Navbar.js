@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import './Navbar.css';
-import { FaShoppingBag } from 'react-icons/fa';
+import React, { useState } from "react";
+import "./Navbar.css";
+import { FaShoppingBag } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [color, setColor] = useState(false);
@@ -12,14 +13,18 @@ const Navbar = () => {
     }
   };
 
-  window.addEventListener('scroll', changeColor);
+  window.addEventListener("scroll", changeColor);
 
   return (
     <>
-      <nav className={color ? 'header header-bg' : 'header'}>
+      <nav className={color ? "header header-bg" : "header"}>
         <div class="container flex flex-wrap items-center justify-between mx-auto">
           <a href="https://flowbite.com/" class="flex items-center">
-            <img className="max-w-[100px]" src="https://cdn.shopify.com/s/files/1/1786/7381/files/PoM_Logo_Green-01.png?v=1614709987" alt="" />
+            <img
+              className="max-w-[100px]"
+              src="https://cdn.shopify.com/s/files/1/1786/7381/files/PoM_Logo_Green-01.png?v=1614709987"
+              alt=""
+            />
           </a>
           <button
             data-collapse-toggle="navbar-default"
@@ -29,19 +34,29 @@ const Navbar = () => {
             aria-expanded="false"
           >
             <span class="sr-only">Open main menu</span>
-            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            <svg
+              class="w-6 h-6"
+              aria-hidden="true"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              ></path>
             </svg>
           </button>
           <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="md:flex md:gap-3">
               <li>
-                <a href="#">Home</a>
+                <Link to="home">Home</Link>
               </li>
               <li>
-                <a href="#">
+                <Link to="cart">
                   <FaShoppingBag size={20} />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
