@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiPlus, FiMinus, FiTrash } from "react-icons/fi";
-import src from "../../assets/coffeebean.jpg";
 //import data from "./data";
 
 const Cart = () => {
@@ -11,7 +10,7 @@ const Cart = () => {
   if (counter <= 0) {
     decrementCounter = () => setCounter(0);
   }
-  let grandTotal = counter * 10;
+  let grandTotal = counter * 48;
   return (
     <section>
       <div className="bg-[#F7F3F2] py-9">
@@ -29,7 +28,7 @@ const Cart = () => {
                 <div className="flex w-2/5">
                   <div className="w-20">
                     <img
-                      src={src}
+                      src="https://cdn.shopify.com/s/files/1/1786/7381/products/FOR_SHOPIFY_DURRAR_02_600x.png?v=1668140002"
                       alt=""
                       className="rounded-md duration-200 hover:scale-105"
                     />
@@ -41,7 +40,7 @@ const Cart = () => {
                   </div>
                 </div>
                 <span className="text-center w-1/5 font-semibold text-sm">
-                  $ 10/pcs
+                  $48
                 </span>
                 <div className="flex justify-center w-1/5">
                   <button onClick={decrementCounter}>
