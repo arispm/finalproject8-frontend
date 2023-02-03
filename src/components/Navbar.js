@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { FaShoppingBag } from "react-icons/fa";
+import { FiShoppingBag } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -55,7 +55,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to="cart">
-                  <FaShoppingBag size={20} />
+                  <FiShoppingBag size={20} />
                 </Link>
               </li>
             </ul>
