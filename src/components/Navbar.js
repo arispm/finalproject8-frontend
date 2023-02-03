@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import { FaShoppingBag } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [color, setColor] = useState(false);
@@ -36,12 +37,12 @@ const Navbar = () => {
           <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="md:flex md:gap-3">
               <li>
-                <a href="#">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="#">
+                <Link to="cart">
                   <FaShoppingBag size={20} />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
