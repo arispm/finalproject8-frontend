@@ -35,7 +35,7 @@ const Cart = () => {
                   </div>
                   <div className="flex items-center justify-center px-4">
                     <span className="font-bold text-sm">
-                      premium black coffe
+                      Al-Durrar - Single Farmer Micro Lot - 4oz
                     </span>
                   </div>
                 </div>
