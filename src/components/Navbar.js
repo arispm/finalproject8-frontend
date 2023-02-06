@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-import { FaShoppingBag } from 'react-icons/fa';
+import { FiShoppingBag } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -19,9 +19,9 @@ const Navbar = () => {
     <>
       <nav className={color ? 'header header-bg' : 'header'}>
         <div class="container flex flex-wrap items-center justify-between mx-auto">
-          <a href="https://flowbite.com/" class="flex items-center">
+          <Link to="/" class="flex items-center">
             <img className="max-w-[100px]" src="https://cdn.shopify.com/s/files/1/1786/7381/files/PoM_Logo_Green-01.png?v=1614709987" alt="" />
-          </a>
+          </Link>
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -40,8 +40,8 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="cart">
-                  <FaShoppingBag size={20} />
+                <Link to="/cart">
+                  <FiShoppingBag size={20} />
                 </Link>
               </li>
             </ul>
