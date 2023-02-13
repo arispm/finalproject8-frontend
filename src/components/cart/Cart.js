@@ -53,7 +53,13 @@ const Cart = () => {
                 </div>
                 <div className="text-center w-1/5 font-semibold text-sm">
                   <button>
-                    <FiTrash size={20} />
+                    <FiTrash
+                      size={20}
+                      className="delete-icon"
+                      onClick={() => {
+                        console.log("delete dah");
+                      }}
+                    />
                   </button>
                 </div>
                 <span className="text-center w-1/5 font-semibold text-sm">
