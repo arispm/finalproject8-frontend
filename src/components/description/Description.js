@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Data } from "../cart/data"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import coffee from "../../assets/coffeebean.jpg";
@@ -19,12 +21,12 @@ const Description = () => {
             <img src={coffee}/>
           </div>
           {/* text */}
-          <div className='flex flex-col mx-[5%] space-y-5'>
+          <div className='flex flex-col mx-[5%] space-y-4'>
             <h5 className='text-left text-sm leading-[19px] my-0 uppercase text-[#D87D4A]'>Product</h5>
-            <h3 className='text-left text-[40px] uppercase leading-[44px] text-[#00000] font-bold tracking-[1.428px]'>LODGE ROAST WHOLE BEAN - 1 LB.</h3>
-            <hr />
+            <h3 className='text-left text-[40px] uppercase leading-[44px] text-[#00000] font-bold tracking-[1.428px]'>WHITE COFFEE - 1 LB.</h3>
+            <hr className='h-px bg-gray-300 border-0 dark:bg-gray-900' />
             <div className='flex space-x-3 my-0'>
-            <div className='flex space-x-0'>
+            <div className='text-md flex space-x-0'>
             <FontAwesomeIcon icon={faStar} className='text-yellow-400' ></FontAwesomeIcon>
             <FontAwesomeIcon icon={faStar} className='text-yellow-400' ></FontAwesomeIcon>
             <FontAwesomeIcon icon={faStar} className='text-yellow-400' ></FontAwesomeIcon>
@@ -33,19 +35,25 @@ const Description = () => {
             </div>
             <span id='noReview' className='text-sm text-gray-500'>(50 Review)</span>
             </div>
-            <hr/>
+            <hr className='h-px bg-gray-200 border-0 dark:bg-gray-900'/>
 
-            <p id='price' className='text-left text-gray-900 font-medium text-[20px]'>$200.00</p>
+            <p id='price' className='text-3xl font-semibold justify-between py-0 uppercase'>$ 48</p>
 
-            <div className='text-sm'>
+            {/* <div className='text-sm'>
               <span className='bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded'>-</span>
               <input type='number' className='mx-2 my-0 form-control count border-none text-center w-12' value='1' readOnly/>
               <span className='bg-red-500 hover:bg-red-700 text-white font-bold p-2 rounded'>+</span>
-            </div>
+            </div> */}
 
-            <button type='button' id='cart' className='bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded'>Add to chart</button>
+            {/* <button type='button' id='cart' className='bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded'>Add to chart</button> */}
 
-            <p className='w-[100%] text-left font-small text-[15px] leading-[25px] opacity-50'>The new XX99 Kopi bikin kuat tahan ngantuk jadi jago ngoding mantaps The new XX99 Kopi bikin kuat tahan ngantuk jadi jago ngoding mantaps The new XX99 Kopi bikin kuat tahan ngantuk jadi jago ngoding mantaps The new XX99 Kopi bikin kuat tahan ngantuk jadi jago ngoding mantaps</p>
+            <Link to="/cart">
+              <button className="rounded-lg bg-[#4B5254] font-semibold hover:bg-slate-600 py-3 text-sm text-white uppercase w-full">Add to cart</button>
+            </Link>
+
+            <p className='mb-3 font-light text-gray-500 dark:text-gray-400'>This is the ultimate medium roast if you aren’t a morning person. The toasted almond aroma and flavors of chocolate and mild fruit wake you up, and the buttery cocoa finish will turn you into a morning person. Enjoy the freedom to grind your own to meet your mood</p>
+
+            {/* <p className='w-[100%] text-left font-small text-[15px] leading-[25px] opacity-50'>This is the ultimate medium roast if you aren’t a morning person. The toasted almond aroma and flavors of chocolate and mild fruit wake you up, and the buttery cocoa finish will turn you into a morning person. Enjoy the freedom to grind your own to meet your mood</p> */}
 
             <button className='bg-[#db7d4a] w-[50%] h-[48px] mt-[5%] font bold uppercase text-[#ffff] text-[13px] tracking-[1px] leading-[18px]'>Submit your review</button>
           </div>
