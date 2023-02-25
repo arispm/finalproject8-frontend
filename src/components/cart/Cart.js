@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiPlus, FiMinus, FiTrash } from 'react-icons/fi';
-//import data from "./data";
+import data from './data';
 
 const Cart = () => {
   const [counter, setCounter] = useState(1);
