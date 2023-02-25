@@ -1,13 +1,20 @@
+import { useState } from 'react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Data } from "../cart/data"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import StarRating from './Rating';
+import StarRating2 from './StarRating';
 import coffee from "../../assets/coffeebean.jpg";
 import coffee1 from "../../assets/coffeebean1.jpg";
 import coffee2 from "../../assets/coffeebean2.jpg";
 
 const Description = () => {
+
+  const [openRating, setOpenRating] = useState(false);
+
   return (
     <div>
       <div className='flex flex-col'>
@@ -48,14 +55,22 @@ const Description = () => {
             {/* <button type='button' id='cart' className='bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded'>Add to chart</button> */}
 
             <Link to="/cart">
-              <button className="rounded-lg bg-[#4B5254] font-semibold hover:bg-slate-600 py-3 text-sm text-white uppercase w-full">Add to cart</button>
+              <button className="rounded-lg bg-[#4B5254] font-semibold hover:bg-slate-600 py-3 text-sm text-white uppercase w-full text-center">
+              <FontAwesomeIcon icon={faCartShopping} className='text-slate-50 text-base mx-4' ></FontAwesomeIcon>
+                Add to cart</button>
             </Link>
 
             <p className='mb-3 font-light text-gray-500 dark:text-gray-400'>This is the ultimate medium roast if you aren’t a morning person. The toasted almond aroma and flavors of chocolate and mild fruit wake you up, and the buttery cocoa finish will turn you into a morning person. Enjoy the freedom to grind your own to meet your mood</p>
 
             {/* <p className='w-[100%] text-left font-small text-[15px] leading-[25px] opacity-50'>This is the ultimate medium roast if you aren’t a morning person. The toasted almond aroma and flavors of chocolate and mild fruit wake you up, and the buttery cocoa finish will turn you into a morning person. Enjoy the freedom to grind your own to meet your mood</p> */}
 
-            <button className='bg-[#db7d4a] w-[50%] h-[48px] mt-[5%] font bold uppercase text-[#ffff] text-[13px] tracking-[1px] leading-[18px]'>Submit your review</button>
+            <button
+            className='bg-[#db7d4a] w-[50%] h-[48px] mt-[5%] font bold uppercase text-[#ffff] text-[13px] tracking-[1px] leading-[18px]' 
+            onClick={ () => {
+              setOpenRating(true);
+            }}>Submit your review</button>
+            {/* <StarRating/> */}
+            {openRating && <StarRating2 closeRating={setOpenRating} />}
           </div>
         </div>
       </div>
