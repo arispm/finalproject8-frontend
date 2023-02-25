@@ -34,6 +34,8 @@ const Cart = () => {
                         <img
                           key={shop.id}
                           src={shop.src}
+                          id={shop.id}
+                          onRemove={shop.onRemove}
                           alt=""
                           className="rounded-md duration-200 hover:scale-105"
                         />
@@ -60,7 +62,8 @@ const Cart = () => {
                           size={20}
                           className="delete-icon"
                           onClick={() => {
-                            console.log("delete dah");
+                            console.log("delete", shop.id);
+                            shop.onRemove(shop.id);
                           }}
                         />
                       </button>
