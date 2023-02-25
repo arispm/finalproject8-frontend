@@ -1,0 +1,102 @@
+/* Hamburger Menu */
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  /* transition: all 0.25s; */
+  position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: #000;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.container2 {
+  width: 100%;
+}
+@media (min-width: 240px) {
+  .container2 {
+    max-width: 240px;
+  }
+}
+@media (min-width: 384px) {
+  .container2 {
+    max-width: 384px;
+  }
+}
+
+/* .doubleColor {
+  height: 100vh;
+  background: linear-gradient(
+    to right,
+    white 0%,
+    white 50%,
+    #f7f3f2 50%,
+    #f7f3f2 100%
+  );
+} */
+
+@media (min-width: 976px) {
+  .doubleColor {
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      white 0%,
+      white 50%,
+      #f7f3f2 50%,
+      #f7f3f2 100%
+    );
+  }
+}
+
+.lineBar {
+  content: "";
+  width: 50%;
+  height: 1px;
+  background-color: #dfdcdc;
+  display: block;
+}
+
+/* Form Design link belajar https://www.youtube.com/watch?v=t0QcJbV9kbU atau https://www.youtube.com/results?search_query=create+form+css tutorial jika setelah ga fokus biar stay gimana : https://www.youtube.com/watch?v=v8mRUU3orjI menit 9:15*/
+
+/*kalau mau animasi*/
+.label1 {
+  transition: top 0.3s;
+}
+
+.input1:focus ~ .label1,
+.input1:not(:placeholder-shown).input1:not(:focus) ~ .label1 {
+  top: -2px;
+  font-size: 12px;
+  padding-top: 3px;
+}
+.input2:focus ~ .label1,
+.input2:not(:placeholder-shown).input1:not(:focus) ~ .label1 {
+  top: -5px;
+  font-size: 12px;
+  padding-top: 3px;
+}
+
+.textSize {
+  font-size: 9px;
+}
+
+@media (min-width: 768px) {
+  .textSize {
+    font-size: 12px;
+  }
+}
