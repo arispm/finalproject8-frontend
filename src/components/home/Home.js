@@ -32,22 +32,24 @@ const Home = () => {
 
       <div className="w-full mt-80 md:flex md:flex-wrap md:justify-around md:items-center p-[5vw] gap-7">
         {allProducts.map((product) => {
-          <div className="md:w-1/4 w-full rounded-lg shadow-md bg-[#4b5254] mt-5">
-            <Link to="/description">
-              <img className="p-8 rounded-t-lg" src="https://cdn.shopify.com/s/files/1/1786/7381/products/FOR_SHOPIFY_DURRAR_02_600x.png?v=1668140002" alt="product image" />
-            </Link>
-            <div className="px-5 pb-5">
+          return (
+            <div className="md:w-1/4 w-full rounded-lg shadow-md bg-[#4B5254] mt-5">
               <Link to="/description">
-                <h5 className="text-xl font-semibold tracking-tight text-white ">{product.name}</h5>
+                <img className="p-8 rounded-t-lg" src="https://cdn.shopify.com/s/files/1/1786/7381/products/FOR_SHOPIFY_DURRAR_02_600x.png?v=1668140002" alt="product image" />
               </Link>
-              <div className="flex items-center justify-between">
-                <span className="text-3xl font-bold text-white ">{product.price}</span>
-                <Link to="/description" className="text-white hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
-                  Buy Now
+              <div className="px-5 pb-5">
+                <Link to="/description">
+                  <h5 className="text-sm font-semibold tracking-tight text-white ">{product.name}</h5>
                 </Link>
+                <div className="flex items-center justify-between">
+                  <span className="text-xl font-bold text-white ">{product.price}</span>
+                  <Link to="/description" className="text-white hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+                    Buy Now
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>;
+          );
         })}
       </div>
 
