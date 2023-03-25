@@ -34,16 +34,16 @@ const Home = () => {
         {allProducts.map((product) => {
           return (
             <div className="md:w-1/4 w-full rounded-lg shadow-md bg-[#4B5254] mt-5">
-              <Link to="/description">
+              <Link to={`/description/${product.id}`}>
                 <img className="p-8 rounded-t-lg" src={product.product_images[0].image_path} alt="product image" />
               </Link>
               <div className="px-5 pb-5">
-                <Link to="/description">
+                <Link to={`/description/${product.id}`}>
                   <h5 className="text-sm font-semibold tracking-tight text-white ">{product.name}</h5>
                 </Link>
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold text-white ">{product.price}</span>
-                  <Link to="/description" className="text-white hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+                  <Link to={`/description/${product.id}`} className="text-white hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
                     Buy Now
                   </Link>
                 </div>
