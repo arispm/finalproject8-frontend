@@ -9,7 +9,6 @@ const Home = () => {
   async function getAllProducts() {
     try {
       const response = await axios.get('http://13.215.161.174:8080/products');
-      console.log(response.data.products);
       setAllProducts(response.data.products);
     } catch (error) {
       console.error(error);
