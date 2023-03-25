@@ -83,11 +83,11 @@ const Cart = () => {
                       {product.price}
                     </span>
                     <div className="flex justify-center w-1/5">
-                      <button onClick={decrementCounter} id={product.id}>
+                      <button onClick={() => decrementCounter(`${product}`)}>
                         <FiMinus />
                       </button>
                       <label className="mx-3 bg-white ">{counter}</label>
-                      <button onClick={incrementCounter} id={product.id}>
+                      <button onClick={() => incrementCounter(`${product}`)}>
                         <FiPlus />
                       </button>
                     </div>
