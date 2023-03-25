@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6d4ac229.css",
+    "main.js": "/static/js/main.5bf3acf0.js",
+    "static/media/Mandiri.png": "/static/media/Mandiri.6e99a52679795fe96ab3.png",
+    "static/media/BNI.png": "/static/media/BNI.ca6c0ff8435fdeca8a0b.png",
+    "static/media/BCA.png": "/static/media/BCA.2b30b746eb1972f8d592.png",
+    "static/media/FOR_SHOPIFY_DURRAR_02_medium.webp": "/static/media/FOR_SHOPIFY_DURRAR_02_medium.9ec37e11ff40ad70c13b.webp",
+    "index.html": "/index.html",
+    "static/media/triangle-svgrepo-com.svg": "/static/media/triangle-svgrepo-com.ed05324589b5bbe4ddcabb9757736c9e.svg",
+    "main.6d4ac229.css.map": "/static/css/main.6d4ac229.css.map",
+    "main.5bf3acf0.js.map": "/static/js/main.5bf3acf0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d4ac229.css",
+    "static/js/main.5bf3acf0.js"
+  ]
+}
