@@ -24,3 +24,6 @@ function Test() {
 }
 
 export default Test;
+
+// http://13.215.161.174:8080/orders
+// http://13.215.161.174:8080/products

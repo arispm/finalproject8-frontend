@@ -12,28 +12,47 @@ import { useState, useEffect } from "react";
 const Checkout = () => {
   const urlPost = "http://13.215.161.174:8080/orders";
   const [data, setData] = useState({
+    orderTotalPrice: "3000",
     orderEmail: "",
     orderFirstName: "",
     orderLastName: "",
-    orderOtherDesc: "",
-    orderAddress: "",
-    orderKabkota: "",
     orderProvinsi: "",
+    orderKabkota: "",
+    orderKecamatan: "Indonesia",
+    orderKelurahan: "Indonesia",
     orderPostalCode: "",
+    orderAddress: "",
     orderPhoneNumber: "",
+    orderOtherDesc: "",
+    orderShippingMethod: "JNE",
+    orderPaymentMethod: "Virtual Account",
+    orderDetails: [
+      {
+        productID: "1",
+        qty: "2",
+        price: "20000",
+      },
+      { productID: "1", qty: "1", price: "10000" },
+    ],
   });
   function submit(e) {
     axios
       .post(urlPost, {
+        orderTotalPrice: data.orderTotalPrice,
         orderEmail: data.orderEmail,
         orderFirstName: data.orderFirstName,
         orderLastName: data.orderLastName,
-        orderOtherDesc: data.orderOtherDesc,
-        orderAddress: data.orderAddress,
-        orderKabkota: data.orderKabkota,
         orderProvinsi: data.orderProvinsi,
+        orderKabkota: data.orderKabkota,
+        orderKecamatan: data.orderKecamatan,
+        orderKelurahan: data.orderKelurahan,
         orderPostalCode: data.orderPostalCode,
+        orderAddress: data.orderAddress,
         orderPhoneNumber: data.orderPhoneNumber,
+        orderOtherDesc: data.orderOtherDesc,
+        orderShippingMethod: data.orderShippingMethod,
+        orderPaymentMethod: data.orderPaymentMethod,
+        orderDetails: data.orderDetails,
       })
       .then((res) => {
         console.log(res.data);
@@ -118,7 +137,7 @@ const Checkout = () => {
                     type="text"
                     value={data.orderEmail}
                     placeholder=" "
-                    class="w-full h-9 textSize rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
+                    class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
                     id="orderEmail"
                     required
                   />
