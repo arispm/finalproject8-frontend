@@ -4,6 +4,8 @@ import Home from "./components/home/Home";
 import Cart from "./components/cart/Cart";
 import Checkout from "./components/checkout/Checkout";
 import Description from "./components/description/Description";
+import Test from "./components/checkout/getTest";
+import Test2 from "./components/checkout/postTest";
 import { Routes, Route } from "react-router-dom";
 import "./index.css";
 
@@ -16,6 +18,8 @@ function App() {
         <Route path="/description/:id" element={<Description />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/getTest" element={<Test />} />
+        <Route path="/postTest" element={<Test2 />} />
       </Routes>
       <Footer />
     </>

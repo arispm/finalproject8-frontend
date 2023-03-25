@@ -6,8 +6,73 @@ import bniImg from "../../assets/BNI.png";
 import mandiriiImg from "../../assets/Mandiri.png";
 import triangle from "../../assets/triangle-svgrepo-com.svg";
 import box from "../../assets/FOR_SHOPIFY_DURRAR_02_medium.webp";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const Checkout = () => {
+  const urlPost = "http://13.215.161.174:8080/orders";
+  const [data, setData] = useState({
+    orderTotalPrice: "3000",
+    orderEmail: "",
+    orderFirstName: "",
+    orderLastName: "",
+    orderProvinsi: "",
+    orderKabkota: "",
+    orderKecamatan: "Indonesia",
+    orderKelurahan: "Indonesia",
+    orderPostalCode: "",
+    orderAddress: "",
+    orderPhoneNumber: "",
+    orderOtherDesc: "",
+    orderShippingMethod: "JNE",
+    orderPaymentMethod: "Virtual Account",
+    orderDetails: [
+      {
+        productID: "1",
+        qty: "2",
+        price: "20000",
+      },
+      { productID: "1", qty: "1", price: "10000" },
+    ],
+  });
+  function submit(e) {
+    axios
+      .post(urlPost, {
+        orderTotalPrice: data.orderTotalPrice,
+        orderEmail: data.orderEmail,
+        orderFirstName: data.orderFirstName,
+        orderLastName: data.orderLastName,
+        orderProvinsi: data.orderProvinsi,
+        orderKabkota: data.orderKabkota,
+        orderKecamatan: data.orderKecamatan,
+        orderKelurahan: data.orderKelurahan,
+        orderPostalCode: data.orderPostalCode,
+        orderAddress: data.orderAddress,
+        orderPhoneNumber: data.orderPhoneNumber,
+        orderOtherDesc: data.orderOtherDesc,
+        orderShippingMethod: data.orderShippingMethod,
+        orderPaymentMethod: data.orderPaymentMethod,
+        orderDetails: data.orderDetails,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  }
+  function handle(e) {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+    console.log(newdata);
+  }
+
+  const [isDropdown, setIsDropdown] = useState(false);
+  const [selected, setSelected] = useState("");
+  const option = [
+    "JNE - Regular",
+    "Pos Indonesia - One Day",
+    "JNT - Sameday",
+    "siCepat - Regular yakin cepat sampai",
+  ];
   return (
     // body = Background image
     <body class="doubleColor ">
@@ -57,224 +122,261 @@ const Checkout = () => {
               <div class="lineBar w-[10%]"></div>
             </div>
             {/* <!-- Container Contact Information - Checkbox --> */}
-            <div class="mb-10">
-              {/* <!-- Address Information --> */}
-              <div class="pl-6 flex flex-col justify-between  mb-3 lg:flex-row lg:items-center">
-                <div class="font-normal text-xl">Contact Information</div>
-                <div class="text-sm">Input your detail below!</div>
-              </div>
-              {/* <!-- Form Email  --> */}
-              <div class="pl-6 form1 relative mb-3">
-                <input
-                  type="text"
-                  placeholder=" "
-                  class="w-full h-9 textSize rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                  id="Email"
-                  required
-                />
-                <label
-                  for="Email"
-                  class="absolute pl-6 text-gray-400 text-base left-4 top-[4.5px] items-center label1 cursor-text"
-                >
-                  Email
-                </label>
-              </div>
-              {/* <!-- Checkbox --> */}
-              <div class="pl-6 flex space-x-3 items-center">
-                <button class="rounded-sm border border-gray-400 w-4 h-4"></button>
-                <div>Email me with offers and promotions</div>
-              </div>
-            </div>
-            {/* <!-- Shipping Container --> */}
-            <div class="pl-6 relative mb-6">
-              <div class="text-xl mb-5">Shipping Address</div>
-              {/* <!-- Courier box--> */}
-              <button
-                id="button1"
-                class="flex items-center justify-between relative border border-gray-300 w-full rounded-lg h-9 mb-3"
-              >
-                <div class="pl-4 text-gray-400">Courier</div>
-                <div class="text-[16px] border-l-[1px] px-4 w-[45px] h-[20px] flex items-center">
-                  {/* <!-- Source : https://www.svgrepo.com/svg/104388/triangle --> */}
-                  <img src={triangle} alt="triangle" />
+            {/* Form Container */}
+            <form onSubmit={(e) => submit(e)}>
+              <div class="mb-10">
+                {/* <!-- Address Information --> */}
+                <div class="pl-6 flex flex-col justify-between  mb-3 lg:flex-row lg:items-center">
+                  <div class="font-normal text-xl">Contact Information</div>
+                  <div class="text-sm">Input your detail below!</div>
                 </div>
-              </button>
-              {/* <!-- Dropdown Courier --> */}
+                {/* <!-- Form Email  --> */}
+                <div class="pl-6 form1 relative mb-3">
+                  <input
+                    onChange={(e) => handle(e)}
+                    type="text"
+                    value={data.orderEmail}
+                    placeholder=" "
+                    class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
+                    id="orderEmail"
+                    required
+                  />
+                  <label
+                    for="orderEmail"
+                    class="absolute pl-6 text-gray-400 text-base left-4 top-[4.5px] items-center label1 cursor-text"
+                  >
+                    Email
+                  </label>
+                </div>
+                {/* <!-- Checkbox --> */}
+                <div class="pl-6 flex space-x-3 items-center">
+                  <button class="rounded-sm border border-gray-400 w-4 h-4"></button>
+                  <div>Email me with offers and promotions</div>
+                </div>
+              </div>
+              {/* <!-- Shipping Container --> */}
+              <div class="pl-6 relative mb-6">
+                <div class="text-xl mb-5">Shipping Address</div>
+                {/* <!-- Courier box--> */}
+                <button
+                  id="button1"
+                  class="flex items-center justify-between relative border border-gray-300 w-full rounded-lg h-9 mb-3"
+                  onClick={(e) => setIsDropdown(!isDropdown)}
+                >
+                  {/* Harusnya ini ada state Courier, tapi ga tau caranya.. sepertinya pake if si bisa */}
+                  <div
+                    onChange={(e) => handle(e)}
+                    class="pl-4"
+                    id="orderShippingMethod"
+                  >
+                    {selected}
+                  </div>
+                  <div class="text-[16px] border-l-[1px] px-4 w-[45px] h-[20px] flex items-center">
+                    {/* <!-- Source : https://www.svgrepo.com/svg/104388/triangle --> */}
+                    <img src={triangle} alt="triangle" />
+                  </div>
+                </button>
+                {/* <!-- Dropdown Courier --> */}
+                {/* tutorial dropdown https://www.youtube.com/watch?v=C845oiKpxcg */}
 
-              <ul
-                id="dropDownCourier"
-                class="z-10 bg-white hidden flex flex-col cursor-pointer absolute pl-6 mt-[-11px] border border-gray-300 rounded-lg gap-y-1 w-[95%] lg:w-[96%]"
-              >
-                <li>JNE - Regular</li>
-                <li>Pos Indonesia - One Day</li>
-                <li>JNT - Sameday</li>
-                <li>siCepat - Regular yakin senin sampai!</li>
-              </ul>
-              {/* <!-- First and Last Form Container --> */}
-              <div class="flex flex-col gap-x-3 items-center lg:flex-row">
-                {/* <!-- form First Name --> */}
-                <div class="relative flex mb-3 w-full lg:w-1/2">
+                {isDropdown && (
+                  <div class="z-10 bg-white flex flex-col cursor-pointer absolute  mt-[-11px] border border-gray-300 rounded-lg gap-y-1 w-[95%] lg:w-[96%] ">
+                    {option.map((option) => (
+                      <div
+                        onClick={(e) => {
+                          setSelected(option);
+                          setIsDropdown(false);
+                        }}
+                      >
+                        <div className="hover:bg-slate-100 pl-6 rounded-lg">
+                          {option}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {/* <!-- First and Last Form Container --> */}
+                <div class="flex flex-col gap-x-3 items-center lg:flex-row">
+                  {/* <!-- form First Name --> */}
+                  <div class="relative flex mb-3 w-full lg:w-1/2">
+                    <input
+                      onChange={(e) => handle(e)}
+                      value={data.orderFirstName}
+                      type="text"
+                      placeholder=" "
+                      class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
+                      id="orderFirstName"
+                      required
+                    />
+                    <label
+                      for="orderFirstName"
+                      class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
+                    >
+                      First Name
+                    </label>
+                  </div>
+                  {/* <!-- Form Last Name --> */}
+                  <div class="relative flex mb-3 w-full lg:w-1/2">
+                    <input
+                      onChange={(e) => handle(e)}
+                      value={data.orderLastName}
+                      type="text"
+                      placeholder=" "
+                      class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
+                      id="orderLastName"
+                      required
+                    />
+                    <label
+                      for="orderLastName"
+                      class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
+                    >
+                      Last Name
+                    </label>
+                  </div>
+                </div>
+                {/* <!-- Company Form --> */}
+                <div class="block form1 relative mb-3">
+                  <input
+                    onChange={(e) => handle(e)}
+                    value={data.orderOtherDesc}
+                    type="text"
+                    placeholder=" "
+                    class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
+                    id="orderOtherDesc"
+                  />
+                  <label
+                    for="orderOtherDesc"
+                    class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
+                  >
+                    Company(Optional)
+                  </label>
+                </div>
+                {/* <!-- Address --> */}
+                <div class="block form1 relative mb-3">
+                  <input
+                    onChange={(e) => handle(e)}
+                    value={data.orderAddress}
+                    type="text"
+                    placeholder=" "
+                    class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
+                    id="orderAddress"
+                    required
+                  />
+                  <label
+                    for="orderAddress"
+                    class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
+                  >
+                    Address
+                  </label>
+                </div>
+                {/* <!-- Apartement, suite, etc. (Optional) --> */}
+                <div class="block form1 relative mb-3">
                   <input
                     type="text"
                     placeholder=" "
                     class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                    id="FirstName"
-                    required
+                    id="Apartement, suite, etc. (Optional)"
                   />
                   <label
-                    for="FirstName"
+                    for="Apartement, suite, etc. (Optional)"
                     class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                   >
-                    First Name
+                    Apartement, suite, etc. (Optional)
                   </label>
                 </div>
-                {/* <!-- Form Last Name --> */}
-                <div class="relative flex mb-3 w-full lg:w-1/2">
+                {/* <!-- City --> */}
+                <div class="block form1 relative mb-3">
                   <input
+                    onChange={(e) => handle(e)}
+                    value={data.orderKabkota}
                     type="text"
                     placeholder=" "
                     class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                    id="LastName"
+                    id="orderKabkota"
                     required
                   />
                   <label
-                    for="LastName"
+                    for="orderKabkota"
                     class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                   >
-                    Last Name
+                    City
                   </label>
                 </div>
-              </div>
-              {/* <!-- Company Form --> */}
-              <div class="block form1 relative mb-3">
-                <input
-                  type="text"
-                  placeholder=" "
-                  class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                  id="Company"
-                />
-                <label
-                  for="Company"
-                  class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                >
-                  Company(Optional)
-                </label>
-              </div>
-              {/* <!-- Address --> */}
-              <div class="block form1 relative mb-3">
-                <input
-                  type="text"
-                  placeholder=" "
-                  class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                  id="Address"
-                  required
-                />
-                <label
-                  for="Address"
-                  class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                >
-                  Address
-                </label>
-              </div>
-              {/* <!-- Apartement, suite, etc. (Optional) --> */}
-              <div class="block form1 relative mb-3">
-                <input
-                  type="text"
-                  placeholder=" "
-                  class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                  id="Apartement, suite, etc. (Optional)"
-                />
-                <label
-                  for="Apartement, suite, etc. (Optional)"
-                  class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                >
-                  Apartement, suite, etc. (Optional)
-                </label>
-              </div>
-              {/* <!-- City --> */}
-              <div class="block form1 relative mb-3">
-                <input
-                  type="text"
-                  placeholder=" "
-                  class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                  id="City"
-                  required
-                />
-                <label
-                  for="City"
-                  class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                >
-                  City
-                </label>
-              </div>
-              {/* <!-- First and Last Form Container --> */}
-              <div class="flex flex-col gap-x-3 items-center lg:flex-row">
-                {/* <!-- form Province --> */}
-                <div class="relative flex mb-3 w-full lg:w-1/2">
+                {/* <!-- First and Last Form Container --> */}
+                <div class="flex flex-col gap-x-3 items-center lg:flex-row">
+                  {/* <!-- form Province --> */}
+                  <div class="relative flex mb-3 w-full lg:w-1/2">
+                    <input
+                      onChange={(e) => handle(e)}
+                      value={data.orderProvinsi}
+                      type="text"
+                      placeholder=" "
+                      class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
+                      id="orderProvinsi"
+                      required
+                    />
+                    <label
+                      for="orderProvinsi"
+                      class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
+                    >
+                      Province
+                    </label>
+                  </div>
+                  {/* <!-- Form Postal code --> */}
+                  <div class="relative flex mb-3 w-full lg:w-1/2">
+                    <input
+                      onChange={(e) => handle(e)}
+                      value={data.orderPostalCode}
+                      type="text"
+                      placeholder=" "
+                      class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
+                      id="orderPostalCode"
+                      required
+                    />
+                    <label
+                      for="orderPostalCode"
+                      class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
+                    >
+                      Postal code
+                    </label>
+                  </div>
+                </div>
+                {/* <!-- Phone --> */}
+                <div class="block form1 relative mb-3">
                   <input
-                    type="text"
+                    onChange={(e) => handle(e)}
+                    value={data.orderPhoneNumber}
+                    type="number"
                     placeholder=" "
                     class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                    id="Province"
+                    id="orderPhoneNumber"
                     required
                   />
                   <label
-                    for="Province"
+                    for="orderPhoneNumber"
                     class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                   >
-                    Province
+                    Phone
                   </label>
                 </div>
-                {/* <!-- Form Postal code --> */}
-                <div class="relative flex mb-3 w-full lg:w-1/2">
-                  <input
-                    type="text"
-                    placeholder=" "
-                    class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                    id="Postal code"
-                    required
-                  />
-                  <label
-                    for="Postal code"
-                    class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                  >
-                    Postal code
-                  </label>
+                {/* <!-- Checkbox --> */}
+                <div class="flex space-x-3 items-center">
+                  <button class="rounded-sm border border-gray-400 w-4 h-4"></button>
+                  <div>Save this information for next time</div>
                 </div>
               </div>
-              {/* <!-- Phone --> */}
-              <div class="block form1 relative mb-3">
-                <input
-                  type="number"
-                  placeholder=" "
-                  class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                  id="Phone"
-                  required
-                />
-                <label
-                  for="Phone"
-                  class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                >
-                  Phone
-                </label>
+              {/* <!-- Return to Cart & button Container --> */}
+              <div class="pl-6 mb-10 flex flex-col-reverse gap-y-4 justify-between items-center lg:flex-row">
+                {/* <!-- Return to Cart --> */}
+                <Link to={"/cart"} class="text-blue-400">
+                  Return to Cart
+                </Link>
+                {/* <!-- Button --> */}
+                <button class="w-full bg-blue-400 rounded-md text-center text-white h-14 lg:w-[35%]">
+                  Order
+                </button>
               </div>
-              {/* <!-- Checkbox --> */}
-              <div class="flex space-x-3 items-center">
-                <button class="rounded-sm border border-gray-400 w-4 h-4"></button>
-                <div>Save this information for next time</div>
-              </div>
-            </div>
-            {/* <!-- Return to Cart & button Container --> */}
-            <div class="pl-6 mb-10 flex flex-col-reverse gap-y-4 justify-between items-center lg:flex-row">
-              {/* <!-- Return to Cart --> */}
-              <Link to={"/cart"} class="text-blue-400">
-                Return to Cart
-              </Link>
-              {/* <!-- Button --> */}
-              <button class="w-full bg-blue-400 rounded-md text-center text-white h-14 lg:w-[35%]">
-                Order
-              </button>
-            </div>
+            </form>
             {/* <!-- Garis Bottom --> */}
             <div class="hidden border-b-2 border-x-GrayDefault mb-3 ml-6 md:flex"></div>
           </div>
