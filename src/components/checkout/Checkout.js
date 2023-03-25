@@ -142,7 +142,7 @@ const Checkout = () => {
                     required
                   />
                   <label
-                    for="Email"
+                    for="orderEmail"
                     class="absolute pl-6 text-gray-400 text-base left-4 top-[4.5px] items-center label1 cursor-text"
                   >
                     Email
@@ -209,7 +209,7 @@ const Checkout = () => {
                       required
                     />
                     <label
-                      for="FirstName"
+                      for="orderFirstName"
                       class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                     >
                       First Name
@@ -227,7 +227,7 @@ const Checkout = () => {
                       required
                     />
                     <label
-                      for="LastName"
+                      for="orderLastName"
                       class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                     >
                       Last Name
@@ -245,7 +245,7 @@ const Checkout = () => {
                     id="orderOtherDesc"
                   />
                   <label
-                    for="Company"
+                    for="orderOtherDesc"
                     class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                   >
                     Company(Optional)
@@ -263,7 +263,7 @@ const Checkout = () => {
                     required
                   />
                   <label
-                    for="Address"
+                    for="orderAddress"
                     class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                   >
                     Address
@@ -296,7 +296,7 @@ const Checkout = () => {
                     required
                   />
                   <label
-                    for="City"
+                    for="orderKabkota"
                     class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                   >
                     City
@@ -316,7 +316,7 @@ const Checkout = () => {
                       required
                     />
                     <label
-                      for="Province"
+                      for="orderProvinsi"
                       class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                     >
                       Province
@@ -334,7 +334,7 @@ const Checkout = () => {
                       required
                     />
                     <label
-                      for="Postal code"
+                      for="orderPostalCode"
                       class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                     >
                       Postal code
@@ -353,7 +353,7 @@ const Checkout = () => {
                     required
                   />
                   <label
-                    for="Phone"
+                    for="orderPhoneNumber"
                     class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
                   >
                     Phone
