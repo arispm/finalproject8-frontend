@@ -35,7 +35,7 @@ const Home = () => {
           return (
             <div className="md:w-1/4 w-full rounded-lg shadow-md bg-[#4B5254] mt-5">
               <Link to="/description">
-                <img className="p-8 rounded-t-lg" src="https://cdn.shopify.com/s/files/1/1786/7381/products/FOR_SHOPIFY_DURRAR_02_600x.png?v=1668140002" alt="product image" />
+                <img className="p-8 rounded-t-lg" src={product.product_images[0].image_path} alt="product image" />
               </Link>
               <div className="px-5 pb-5">
                 <Link to="/description">
