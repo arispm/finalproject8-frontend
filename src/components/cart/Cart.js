@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { FiPlus, FiMinus, FiTrash } from "react-icons/fi";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { FiPlus, FiMinus, FiTrash } from 'react-icons/fi';
 
 const Cart = () => {
   const [products, setProduct] = useState([]);
@@ -11,16 +11,14 @@ const Cart = () => {
   }, []);
 
   const getProduct = async () => {
-    const response = await axios.get("http://13.215.161.174:8080/products");
+    const response = await axios.get('https://13.215.161.174:8080/products');
     setProduct(response.data.products);
   };
 
   const deleteProduct = async (productId) => {
     try {
-      await axios.delete(`http://13.215.161.174:8080/products/${productId}`);
-      const newProducts = products.filter(
-        (product) => product.id !== productId
-      );
+      await axios.delete(`https://13.215.161.174:8080/products/${productId}`);
+      const newProducts = products.filter((product) => product.id !== productId);
       setProduct(newProducts);
     } catch (error) {
       console.log(error);
@@ -50,9 +48,7 @@ const Cart = () => {
       <div className="bg-[#F7F3F2] py-9">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="sm:text-center">
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl py-5">
-              SHOOPING CART
-            </h1>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl py-5">SHOOPING CART</h1>
           </div>
         </div>
 
@@ -65,23 +61,13 @@ const Cart = () => {
                   <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-2">
                     <div className="flex w-2/5">
                       <div className="w-20">
-                        <img
-                          key={product.id}
-                          src={product.product_images[0].image_path}
-                          id={product.id}
-                          alt=""
-                          className="rounded-md duration-200 hover:scale-105"
-                        />
+                        <img key={product.id} src={product.product_images[0].image_path} id={product.id} alt="" className="rounded-md duration-200 hover:scale-105" />
                       </div>
                       <div className="flex items-center justify-center px-4">
-                        <span className="font-bold text-sm">
-                          {product.name}
-                        </span>
+                        <span className="font-bold text-sm">{product.name}</span>
                       </div>
                     </div>
-                    <span className="text-center w-1/5 font-semibold text-sm">
-                      {product.price}
-                    </span>
+                    <span className="text-center w-1/5 font-semibold text-sm">{product.price}</span>
                     <div className="flex justify-center w-1/5">
                       <button onClick={() => decrementCounter(`${product}`)}>
                         <FiMinus />
@@ -98,15 +84,13 @@ const Cart = () => {
                           className="delete-icon"
                           onClick={() => {
                             deleteProduct(product.id);
-                            console.log("delete", product.id);
+                            console.log('delete', product.id);
                             //product.onRemove(product.id);
                           }}
                         />
                       </button>
                     </div>
-                    <span className="text-center w-1/5 font-semibold text-sm">
-                      $ {counter * product.price}
-                    </span>
+                    <span className="text-center w-1/5 font-semibold text-sm">$ {counter * product.price}</span>
                   </div>
                 </div>
               </div>
@@ -114,18 +98,13 @@ const Cart = () => {
           );
         })}
 
-        <div
-          id="summary"
-          className="px-20 py-10 content-center sm:w-1/2 lg:w-1/10 border"
-        >
+        <div id="summary" className="px-20 py-10 content-center sm:w-1/2 lg:w-1/10 border">
           <div className="flex text-3xl font-semibold justify-between py-6 uppercase">
             <span>Grand Total</span>
             <span>$ {totalCartPrice}</span>
           </div>
           <Link to="/checkout">
-            <button className="rounded-lg bg-[#4B5254] font-semibold hover:bg-slate-400 py-3 text-sm text-white uppercase w-1/4">
-              Proceed to Checkout
-            </button>
+            <button className="rounded-lg bg-[#4B5254] font-semibold hover:bg-slate-400 py-3 text-sm text-white uppercase w-1/4">Proceed to Checkout</button>
           </Link>
         </div>
       </div>

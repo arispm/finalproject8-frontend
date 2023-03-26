@@ -1,38 +1,38 @@
-import React from "react";
-import "./Checkout.css";
-import { Link } from "react-router-dom";
-import bcaImg from "../../assets/BCA.png";
-import bniImg from "../../assets/BNI.png";
-import mandiriiImg from "../../assets/Mandiri.png";
-import triangle from "../../assets/triangle-svgrepo-com.svg";
-import box from "../../assets/FOR_SHOPIFY_DURRAR_02_medium.webp";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import React from 'react';
+import './Checkout.css';
+import { Link } from 'react-router-dom';
+import bcaImg from '../../assets/BCA.png';
+import bniImg from '../../assets/BNI.png';
+import mandiriiImg from '../../assets/Mandiri.png';
+import triangle from '../../assets/triangle-svgrepo-com.svg';
+import box from '../../assets/FOR_SHOPIFY_DURRAR_02_medium.webp';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const Checkout = () => {
-  const urlPost = "http://13.215.161.174:8080/orders";
+  const urlPost = 'https://13.215.161.174:8080/orders';
   const [data, setData] = useState({
-    orderTotalPrice: "3000",
-    orderEmail: "",
-    orderFirstName: "",
-    orderLastName: "",
-    orderProvinsi: "",
-    orderKabkota: "",
-    orderKecamatan: "Indonesia",
-    orderKelurahan: "Indonesia",
-    orderPostalCode: "",
-    orderAddress: "",
-    orderPhoneNumber: "",
-    orderOtherDesc: "",
-    orderShippingMethod: "JNE",
-    orderPaymentMethod: "Virtual Account",
+    orderTotalPrice: '3000',
+    orderEmail: '',
+    orderFirstName: '',
+    orderLastName: '',
+    orderProvinsi: '',
+    orderKabkota: '',
+    orderKecamatan: 'Indonesia',
+    orderKelurahan: 'Indonesia',
+    orderPostalCode: '',
+    orderAddress: '',
+    orderPhoneNumber: '',
+    orderOtherDesc: '',
+    orderShippingMethod: 'JNE',
+    orderPaymentMethod: 'Virtual Account',
     orderDetails: [
       {
-        productID: "1",
-        qty: "2",
-        price: "20000",
+        productID: '1',
+        qty: '2',
+        price: '20000',
       },
-      { productID: "1", qty: "1", price: "10000" },
+      { productID: '1', qty: '1', price: '10000' },
     ],
   });
   function submit(e) {
@@ -66,13 +66,8 @@ const Checkout = () => {
   }
 
   const [isDropdown, setIsDropdown] = useState(false);
-  const [selected, setSelected] = useState("");
-  const option = [
-    "JNE - Regular",
-    "Pos Indonesia - One Day",
-    "JNT - Sameday",
-    "siCepat - Regular yakin cepat sampai",
-  ];
+  const [selected, setSelected] = useState('');
+  const option = ['JNE - Regular', 'Pos Indonesia - One Day', 'JNT - Sameday', 'siCepat - Regular yakin cepat sampai'];
   return (
     // body = Background image
     <body class="doubleColor ">
@@ -88,7 +83,7 @@ const Checkout = () => {
               <Link to="/cart">
                 <button className="text-blue-400">Cart</button>
               </Link>
-              <p>></p>
+              <p></p>
               <div class="mb-3">Checkout</div>
             </div>
             {/* <!-- Line Payment TOP--> */}
@@ -132,19 +127,8 @@ const Checkout = () => {
                 </div>
                 {/* <!-- Form Email  --> */}
                 <div class="pl-6 form1 relative mb-3">
-                  <input
-                    onChange={(e) => handle(e)}
-                    type="text"
-                    value={data.orderEmail}
-                    placeholder=" "
-                    class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                    id="orderEmail"
-                    required
-                  />
-                  <label
-                    for="orderEmail"
-                    class="absolute pl-6 text-gray-400 text-base left-4 top-[4.5px] items-center label1 cursor-text"
-                  >
+                  <input onChange={(e) => handle(e)} type="text" value={data.orderEmail} placeholder=" " class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1" id="orderEmail" required />
+                  <label for="orderEmail" class="absolute pl-6 text-gray-400 text-base left-4 top-[4.5px] items-center label1 cursor-text">
                     Email
                   </label>
                 </div>
@@ -158,17 +142,9 @@ const Checkout = () => {
               <div class="pl-6 relative mb-6">
                 <div class="text-xl mb-5">Shipping Address</div>
                 {/* <!-- Courier box--> */}
-                <button
-                  id="button1"
-                  class="flex items-center justify-between relative border border-gray-300 w-full rounded-lg h-9 mb-3"
-                  onClick={(e) => setIsDropdown(!isDropdown)}
-                >
+                <button id="button1" class="flex items-center justify-between relative border border-gray-300 w-full rounded-lg h-9 mb-3" onClick={(e) => setIsDropdown(!isDropdown)}>
                   {/* Harusnya ini ada state Courier, tapi ga tau caranya.. sepertinya pake if si bisa */}
-                  <div
-                    onChange={(e) => handle(e)}
-                    class="pl-4"
-                    id="orderShippingMethod"
-                  >
+                  <div onChange={(e) => handle(e)} class="pl-4" id="orderShippingMethod">
                     {selected}
                   </div>
                   <div class="text-[16px] border-l-[1px] px-4 w-[45px] h-[20px] flex items-center">
@@ -188,9 +164,7 @@ const Checkout = () => {
                           setIsDropdown(false);
                         }}
                       >
-                        <div className="hover:bg-slate-100 pl-6 rounded-lg">
-                          {option}
-                        </div>
+                        <div className="hover:bg-slate-100 pl-6 rounded-lg">{option}</div>
                       </div>
                     ))}
                   </div>
@@ -208,10 +182,7 @@ const Checkout = () => {
                       id="orderFirstName"
                       required
                     />
-                    <label
-                      for="orderFirstName"
-                      class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                    >
+                    <label for="orderFirstName" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                       First Name
                     </label>
                   </div>
@@ -226,28 +197,15 @@ const Checkout = () => {
                       id="orderLastName"
                       required
                     />
-                    <label
-                      for="orderLastName"
-                      class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                    >
+                    <label for="orderLastName" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                       Last Name
                     </label>
                   </div>
                 </div>
                 {/* <!-- Company Form --> */}
                 <div class="block form1 relative mb-3">
-                  <input
-                    onChange={(e) => handle(e)}
-                    value={data.orderOtherDesc}
-                    type="text"
-                    placeholder=" "
-                    class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                    id="orderOtherDesc"
-                  />
-                  <label
-                    for="orderOtherDesc"
-                    class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                  >
+                  <input onChange={(e) => handle(e)} value={data.orderOtherDesc} type="text" placeholder=" " class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1" id="orderOtherDesc" />
+                  <label for="orderOtherDesc" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                     Company(Optional)
                   </label>
                 </div>
@@ -262,25 +220,14 @@ const Checkout = () => {
                     id="orderAddress"
                     required
                   />
-                  <label
-                    for="orderAddress"
-                    class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                  >
+                  <label for="orderAddress" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                     Address
                   </label>
                 </div>
                 {/* <!-- Apartement, suite, etc. (Optional) --> */}
                 <div class="block form1 relative mb-3">
-                  <input
-                    type="text"
-                    placeholder=" "
-                    class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1"
-                    id="Apartement, suite, etc. (Optional)"
-                  />
-                  <label
-                    for="Apartement, suite, etc. (Optional)"
-                    class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                  >
+                  <input type="text" placeholder=" " class="w-full h-9 text-pasBanget rounded-lg border border-gray-300 outline-blue-400 pl-4 pt-4 pb-2 input1" id="Apartement, suite, etc. (Optional)" />
+                  <label for="Apartement, suite, etc. (Optional)" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                     Apartement, suite, etc. (Optional)
                   </label>
                 </div>
@@ -295,10 +242,7 @@ const Checkout = () => {
                     id="orderKabkota"
                     required
                   />
-                  <label
-                    for="orderKabkota"
-                    class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                  >
+                  <label for="orderKabkota" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                     City
                   </label>
                 </div>
@@ -315,10 +259,7 @@ const Checkout = () => {
                       id="orderProvinsi"
                       required
                     />
-                    <label
-                      for="orderProvinsi"
-                      class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                    >
+                    <label for="orderProvinsi" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                       Province
                     </label>
                   </div>
@@ -333,10 +274,7 @@ const Checkout = () => {
                       id="orderPostalCode"
                       required
                     />
-                    <label
-                      for="orderPostalCode"
-                      class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                    >
+                    <label for="orderPostalCode" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                       Postal code
                     </label>
                   </div>
@@ -352,10 +290,7 @@ const Checkout = () => {
                     id="orderPhoneNumber"
                     required
                   />
-                  <label
-                    for="orderPhoneNumber"
-                    class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text"
-                  >
+                  <label for="orderPhoneNumber" class="absolute pl-1 text-gray-400 text-base left-3 top-[4.5px] items-center label1 cursor-text">
                     Phone
                   </label>
                 </div>
@@ -368,13 +303,11 @@ const Checkout = () => {
               {/* <!-- Return to Cart & button Container --> */}
               <div class="pl-6 mb-10 flex flex-col-reverse gap-y-4 justify-between items-center lg:flex-row">
                 {/* <!-- Return to Cart --> */}
-                <Link to={"/cart"} class="text-blue-400">
+                <Link to={'/cart'} class="text-blue-400">
                   Return to Cart
                 </Link>
                 {/* <!-- Button --> */}
-                <button class="w-full bg-blue-400 rounded-md text-center text-white h-14 lg:w-[35%]">
-                  Order
-                </button>
+                <button class="w-full bg-blue-400 rounded-md text-center text-white h-14 lg:w-[35%]">Order</button>
               </div>
             </form>
             {/* <!-- Garis Bottom --> */}
@@ -401,9 +334,7 @@ const Checkout = () => {
                 <div className="relative">
                   {/* QTY and RoundShape */}
                   <div className="rounded-full absolute border-white border-[1px] bg-GreenDefault w-[30px] h-[30px] items-center top-[-10px] right-[-14px]">
-                    <div className="text-white left-[8px] top-[6px] text-xs absolute">
-                      01
-                    </div>
+                    <div className="text-white left-[8px] top-[6px] text-xs absolute">01</div>
                   </div>
                   {/* Box */}
                   <div className="bg-white rounded-[12px] border-2 border-gray-200 items-center justify-center w-[100px] h-[100px] flex">
@@ -411,9 +342,7 @@ const Checkout = () => {
                   </div>
                 </div>
                 {/* Item Name */}
-                <div className="w-[280px] ">
-                  Al-Durrar - Single Farmer Micro lot Box - 4oz
-                </div>
+                <div className="w-[280px] ">Al-Durrar - Single Farmer Micro lot Box - 4oz</div>
                 {/* Price */}
                 <div>$48.00</div>
               </div>
@@ -423,24 +352,13 @@ const Checkout = () => {
               <div className="gap-x-2 flex py-2 items-center mb-3">
                 {/* form */}
                 <div className="w-3/4 relative">
-                  <input
-                    type="text"
-                    placeholder=" "
-                    class="w-full h-9 textSize rounded-md border border-gray-300 outline-blue-400 pl-3 pt-4 pb-2 input2"
-                    id="Discount"
-                    required
-                  />
-                  <label
-                    for="Discount"
-                    class="absolute pl-3 text-gray-400 text-base left-0 top-[4.5px] items-center label1 cursor-text"
-                  >
+                  <input type="text" placeholder=" " class="w-full h-9 textSize rounded-md border border-gray-300 outline-blue-400 pl-3 pt-4 pb-2 input2" id="Discount" required />
+                  <label for="Discount" class="absolute pl-3 text-gray-400 text-base left-0 top-[4.5px] items-center label1 cursor-text">
                     Discount Code
                   </label>
                 </div>
                 {/* Button */}
-                <button className="w-1/4 rounded-md bg-blue-500 h-9 text-white">
-                  Apply
-                </button>
+                <button className="w-1/4 rounded-md bg-blue-500 h-9 text-white">Apply</button>
               </div>
               {/* Border */}
               <div class=" border-b-2 border-x-GrayDefault mb-3  md:flex"></div>
