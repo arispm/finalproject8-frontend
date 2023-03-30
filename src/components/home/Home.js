@@ -8,7 +8,7 @@ const Home = () => {
   const [allProducts, setAllProducts] = useState([]);
   async function getAllProducts() {
     try {
-      const response = await axios.get('http://13.215.161.174:8080/products');
+      const response = await axios.get('https://stormy-gloves-frog.cyclic.app/products');
       setAllProducts(response.data.products);
     } catch (error) {
       console.error(error);

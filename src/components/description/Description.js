@@ -14,7 +14,7 @@ const Description = () => {
   const [product, setProduct] = useState({});
   async function getProduct() {
     try {
-      const response = await axios.get(`http://13.215.161.174:8080/products/${id}`);
+      const response = await axios.get(`https://stormy-gloves-frog.cyclic.app/products/${id}`);
       setProduct(response.data.products);
       console.log(response);
     } catch (error) {

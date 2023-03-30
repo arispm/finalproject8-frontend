@@ -11,13 +11,13 @@ const Cart = () => {
   }, []);
 
   const getProduct = async () => {
-    const response = await axios.get('http://13.215.161.174:8080/products');
+    const response = await axios.get('https://stormy-gloves-frog.cyclic.app/products');
     setProduct(response.data.products);
   };
 
   const deleteProduct = async (productId) => {
     try {
-      await axios.delete(`http://13.215.161.174:8080/products/${productId}`);
+      await axios.delete(`https://stormy-gloves-frog.cyclic.app/products/${productId}`);
       const newProducts = products.filter((product) => product.id !== productId);
       setProduct(newProducts);
     } catch (error) {

@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const Checkout = () => {
-  const urlPost = 'http://13.215.161.174:8080/orders';
+  const urlPost = 'https://stormy-gloves-frog.cyclic.app/orders';
   const [data, setData] = useState({
     orderTotalPrice: '3000',
     orderEmail: '',
